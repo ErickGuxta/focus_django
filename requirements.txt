@@ -1,0 +1,4 @@
+asgiref==3.11.1
+Django==6.0.5
+html2text==2025.4.15
+sqlparse==0.5.5
