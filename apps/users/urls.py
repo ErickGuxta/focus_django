@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-urlspatterns = [
+urlpatterns = [
     path('',                   views.index,    name = "listar-users"),
     path('criar/',             views.criar,    name = "criar-users"),
     path('<int:id>/detalhar/', views.detalhar, name = "detalhar-users"),

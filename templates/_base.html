@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "includes/_header.html" %}
+{% block extra_head %}{% endblock %}
+</head>
+<body data-shell="admin" data-page="dashboard" data-breadcrumb="Home > Dashboard">
+
+{% include "includes/_sidebar.html" %}
+
+{% block content %}{% endblock %}
+
+{% include "includes/_footer.html" %}
+{% include "includes/_scripts.html" %}
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>
