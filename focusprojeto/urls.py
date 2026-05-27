@@ -16,10 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from apps.users import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("apps.users.urls")),
-    path('users/', include("apps.users.urls")),
+    path('admin/'           , admin.site.urls),
+
+    path(''                 , views.dashboard, name="dashboard"),
+    path('access/'          , include("django.contrib.auth.urls")),
+    path('access/register/' , views.register,  name="register"),
+    path('users/'           , include("apps.users.urls")),
+    #path('projects/'        , include("apps.users.urls")),
+    #path('events/'          , include("apps.users.urls")),
+    #path('kanban/'          , include("apps.users.urls")),
 
 ]

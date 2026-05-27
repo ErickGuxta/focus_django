@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up | Focus 2026 </title>
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main-v4.css' %}">
+</head>
+
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="brand-icon">F</div>
+        <div class="brand-name">Focus <small
+            style="font-weight:400;color:var(--text-muted);font-size:13px;margin-left:2px">v1</small></div>
+      </div>
+
+      <div class="auth-title">Crie sua conta</div>
+      <div class="auth-subtitle">Comece em menos de um minuto.</div>
+
+      {% if form.errors %}
+        <div class="form-hint" style="color:var(--red);margin-bottom:12px">
+          Verifique os campos abaixo e tente novamente.
+        </div>
+      {% endif %}
+
+      <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="form-label" for="id_username">Usuário</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="8" cy="5" r="3" />
+              <path d="M2 14a6 6 0 0112 0" />
+            </svg>
+            <input type="text" name="username" id="id_username" class="form-control" placeholder="Seu usuário" value="{{ form.username.value|default:'' }}" required>
+          </div>
+          {% for error in form.username.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="id_email">Email</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="12" height="10" rx="1.5" />
+              <path d="M2 5l6 4 6-4" />
+            </svg>
+            <input type="email" name="email" id="id_email" class="form-control" placeholder="voce@email.com" value="{{ form.email.value|default:'' }}" required>
+          </div>
+          {% for error in form.email.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="id_password">Senha</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="7" width="10" height="7" rx="1.5" />
+              <path d="M5 7V5a3 3 0 016 0v2" />
+            </svg>
+            <input type="password" name="password" id="id_password" class="form-control" placeholder="Sua senha"
+              required>
+          </div>
+          {% for error in form.password.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
+        </div>
+
+        <div class="auth-actions" style="justify-content:flex-start">
+          <label class="form-check">
+            <input type="checkbox" required> I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;height:38px">
+          Criar conta
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Já tem uma conta? <a href="{% url 'login' %}">Entrar</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

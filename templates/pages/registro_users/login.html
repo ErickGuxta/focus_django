@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | Focus 2026 </title>
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main-v4.css' %}">
+</head>
+
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="brand-icon">F</div>
+        <div class="brand-name">Focus <small
+            style="font-weight:400;color:var(--text-muted);font-size:13px;margin-left:2px">v1</small></div>
+      </div>
+
+      <div class="auth-title">Bem-vindo de volta</div>
+      <div class="auth-subtitle">Entre para continuar no dashboard.</div>
+
+      {% if form.errors %}
+        <div class="form-hint" style="color:var(--red);margin-bottom:12px">
+          Usuário ou senha inválidos.
+        </div>
+      {% endif %}
+
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if next %}
+          <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+        <div class="form-group">
+          <label class="form-label" for="id_username">Usuário</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="12" height="10" rx="1.5" />
+              <path d="M2 5l6 4 6-4" />
+            </svg>
+            <input type="text" name="username" id="id_username" class="form-control" placeholder="Seu usuário" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="id_password">Senha</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="7" width="10" height="7" rx="1.5" />
+              <path d="M5 7V5a3 3 0 016 0v2" />
+            </svg>
+            <input type="password" name="password" id="id_password" class="form-control" placeholder="••••••••" required>
+          </div>
+        </div>
+
+        <div class="auth-actions">
+          <label class="form-check">
+            <input type="checkbox" checked> Lembrar acesso
+          </label>
+          <a href="{% url 'password_reset' %}">Esqueceu a senha?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;height:38px">
+          Entrar
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Não tem uma conta? <a href="{% url 'register' %}">Criar conta</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
