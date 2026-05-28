@@ -32,7 +32,7 @@
         </div>
       {% endif %}
 
-      <form method="post" action="{% url 'login' %}">
+      <form method="post" action="{% url 'login' %}"> 
         {% csrf_token %}
         {% if next %}
           <input type="hidden" name="next" value="{{ next }}">
@@ -72,7 +72,7 @@
       </form>
 
       <div class="auth-footer">
-        Não tem uma conta? <a href="{% url 'register' %}">Criar conta</a>
+        Acesso liberado apenas para usuários cadastrados pelo administrador.
       </div>
     </div>
   </div>

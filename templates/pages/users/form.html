@@ -1,0 +1,75 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<main class="main">
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div class="page-header-row">
+        <div>
+          <div class="page-pretitle">Admin</div>
+          <h1 class="page-title">{% if user %}Deletar usuário{% elif is_edit %}Editar usuário{% else %}Criar usuário{% endif %}</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+
+          {% if user %}
+            <p>Tem certeza que deseja deletar o usuário <strong>{{ user.username }}</strong>?</p>
+          {% else %}
+          {% if form.errors %}
+            <div class="form-hint" style="color:var(--red);margin-bottom:12px">
+              Verifique os campos abaixo e tente novamente.
+            </div>
+          {% endif %}
+
+          <div class="form-group">
+            <label class="form-label" for="{{ form.username.id_for_label }}">Usuário</label>
+            {{ form.username }}
+            {% for error in form.username.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            {% for error in form.email.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="{{ form.password.id_for_label }}">Senha</label>
+            {{ form.password }}
+            {% for error in form.password.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
+          </div>
+
+          <div class="form-group">
+            <label class="form-check">
+              {{ form.is_active }}
+              Usuário ativo
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-check">
+              {{ form.is_superuser }}
+              Administrador
+            </label>
+          </div>
+          {% endif %}
+
+          <div class="page-actions" style="justify-content:flex-start">
+            {% if user %}
+              <button type="submit" class="btn btn-primary">Confirmar exclusão</button>
+            {% else %}
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            {% endif %}
+            <a href="{% url 'list-users' %}" class="btn btn-outline">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

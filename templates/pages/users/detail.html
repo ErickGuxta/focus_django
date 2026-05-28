@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<main class="main">
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div class="page-header-row">
+        <div>
+          <div class="page-pretitle">Admin</div>
+          <h1 class="page-title">{{ user.username }}</h1>
+        </div>
+        <div class="page-actions">
+          <a href="{% url 'edit-users' user.id %}" class="btn btn-primary">Editar</a>
+          <a href="{% url 'list-users' %}" class="btn btn-outline">Voltar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Ativo:</strong> {% if user.is_active %}Sim{% else %}Não{% endif %}</p>
+        <p><strong>Administrador:</strong> {% if user.is_superuser %}Sim{% else %}Não{% endif %}</p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
