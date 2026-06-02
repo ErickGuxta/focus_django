@@ -4,7 +4,7 @@
 {% include "includes/_header.html" %}
 {% block extra_head %}{% endblock %}
 </head>
-<body data-shell="admin" data-page="dashboard" data-breadcrumb="Home > Dashboard">
+<body data-shell="admin" data-page="{% block page_key %}dashboard{% endblock %}" data-breadcrumb="{% block breadcrumb %}Home > Dashboard{% endblock %}">
 
 {% include "includes/_sidebar.html" %}
 

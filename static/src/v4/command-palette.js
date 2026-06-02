@@ -4,7 +4,7 @@
 // fuzzy-search library; the matcher is a small subsequence + word-boundary
 // scorer that's good enough for ~50 items.
 
-import { NAV } from './shell-render.js';
+import { NAV } from './shell-render.js?v=sidebar-clean-1';
 import { showToast } from './toast.js';
 import { showModal } from './modal.js';
 

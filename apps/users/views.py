@@ -2,11 +2,12 @@
 from django.shortcuts import render, get_object_or_404, redirect 
 
 #importando User padrão do django; biblioteca de login_required e user_passes_test para acesso restrito a usuários 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+# from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
-
-#Forms
 from .forms import UserForm
+
+User = get_user_model()
 
 def is_admin(user):
     return user.is_superuser
@@ -100,5 +101,5 @@ def delete(request, id):
         user.delete()
         return redirect("list-users")
     
-    context = {"user": user}
+    context = {"delete_user": user}
     return render(request, "pages/users/form.html", context)

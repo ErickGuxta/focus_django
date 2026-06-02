@@ -1,5 +1,8 @@
 {% extends "_base.html" %}
 
+{% block page_key %}user_management{% endblock %}
+{% block breadcrumb %}Home > Admin > User management{% endblock %}
+
 {% block content %}
 <main class="main">
   <div class="page-wrapper">
@@ -7,7 +10,7 @@
       <div class="page-header-row">
         <div>
           <div class="page-pretitle">Admin</div>
-          <h1 class="page-title">{% if user %}Deletar usuário{% elif is_edit %}Editar usuário{% else %}Criar usuário{% endif %}</h1>
+          <h1 class="page-title">{% if delete_user %}Deletar usuario{% elif is_edit %}Editar usuario{% else %}Criar usuario{% endif %}</h1>
         </div>
       </div>
     </div>
@@ -17,8 +20,8 @@
         <form method="post">
           {% csrf_token %}
 
-          {% if user %}
-            <p>Tem certeza que deseja deletar o usuário <strong>{{ user.username }}</strong>?</p>
+          {% if delete_user %}
+            <p>Tem certeza que deseja deletar o usuario <strong>{{ delete_user.username }}</strong>?</p>
           {% else %}
           {% if form.errors %}
             <div class="form-hint" style="color:var(--red);margin-bottom:12px">
@@ -38,6 +41,14 @@
             {% for error in form.email.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
           </div>
 
+          {% if form.nome %}
+          <div class="form-group">
+            <label class="form-label" for="{{ form.nome.id_for_label }}">Nome</label>
+            {{ form.nome }}
+            {% for error in form.nome.errors %}<div class="form-hint" style="color:var(--red)">{{ error }}</div>{% endfor %}
+          </div>
+          {% endif %}
+
           <div class="form-group">
             <label class="form-label" for="{{ form.password.id_for_label }}">Senha</label>
             {{ form.password }}
@@ -51,16 +62,25 @@
             </label>
           </div>
 
+          {% if form.is_staff %}
+          <div class="form-group">
+            <label class="form-check">
+              {{ form.is_staff }}
+              Pode acessar o admin
+            </label>
+          </div>
+          {% endif %}
+
           <div class="form-group">
             <label class="form-check">
               {{ form.is_superuser }}
-              Administrador
+              Administrador geral
             </label>
           </div>
           {% endif %}
 
           <div class="page-actions" style="justify-content:flex-start">
-            {% if user %}
+            {% if delete_user %}
               <button type="submit" class="btn btn-primary">Confirmar exclusão</button>
             {% else %}
               <button type="submit" class="btn btn-primary">Salvar</button>

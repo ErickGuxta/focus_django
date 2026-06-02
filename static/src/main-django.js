@@ -80,6 +80,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   const form = e.target;
   if (!(form instanceof HTMLFormElement)) {return;}
+  if (!form.matches('[data-js-submit]')) {return;}
   e.preventDefault();
   const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
   const label = (submitBtn?.textContent || submitBtn?.value || 'Saved').trim();

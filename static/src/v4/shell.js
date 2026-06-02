@@ -5,7 +5,7 @@
 // file), render it from the same string templates. Either way, mountShell()
 // always wires up runtime behavior (mobile drawer, theme toggle).
 
-import { renderShell } from './shell-render.js';
+import { renderShell } from './shell-render.js?v=sidebar-clean-1';
 import { openPanel, openMenu } from './menus.js';
 import { showToast } from './toast.js';
 import { showModal } from './modal.js';

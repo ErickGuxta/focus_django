@@ -10,109 +10,26 @@
 // `data-page` highlight match. The parent stays expanded if any child matches.
 export const NAV = [
   {
-    label: 'General',
+    label: 'Geral',
     items: [
-      {
-        text: 'Dashboards', icon: 'dashboard',
-        children: [
-          { key: 'dashboard',   href: 'index.html',  text: 'Operations' },
-          { key: 'dashboard-2', href: 'index2.html', text: 'Analytics' },
-          { key: 'dashboard-3', href: 'index3.html', text: 'Sales' },
-          { key: 'dashboard-4', href: 'index4.html', text: 'System health' }
-        ]
-      },
-      {
-        text: 'Forms', icon: 'forms', badge: { text: 'Hot', cls: 'badge-red' },
-        children: [
-          { key: 'forms',            href: 'form.html',            text: 'General' },
-          { key: 'form-advanced',    href: 'form_advanced.html',   text: 'Advanced controls' },
-          { key: 'form-buttons',     href: 'form_buttons.html',    text: 'Buttons' },
-          { key: 'form-upload',      href: 'form_upload.html',     text: 'Upload' },
-          { key: 'form-validation',  href: 'form_validation.html', text: 'Validation' },
-          { key: 'form-wizards',     href: 'form_wizards.html',    text: 'Wizard' }
-        ]
-      },
-      {
-        text: 'Tables', icon: 'tables',
-        children: [
-          { key: 'tables',         href: 'tables.html',         text: 'Static' },
-          { key: 'tables-dynamic', href: 'tables_dynamic.html', text: 'Dynamic' }
-        ]
-      },
-      {
-        text: 'Charts', icon: 'charts', badge: { text: 'New', cls: 'badge-teal' },
-        children: [
-          { key: 'charts',       href: 'chartjs.html',     text: 'Chart cards' },
-          { key: 'echarts',      href: 'echarts.html',     text: 'ECharts gallery' },
-          { key: 'other-charts', href: 'other_charts.html', text: 'SVG charts' }
-        ]
-      },
-      { key: 'calendar', href: 'calendar.html', text: 'Calendar', icon: 'calendar' },
-      { key: 'map',      href: 'map.html',      text: 'Map',      icon: 'map' }
+      { key: 'dashboard', href: '/', text: 'Dashboard', icon: 'dashboard' },
+      { key: 'calendar', href: 'calendar.html', text: 'Calendário', icon: 'calendar' },
+      { key: 'kanban', href: 'kanban.html', text: 'Kanban', icon: 'kanban' }
     ]
   },
   {
-    label: 'Apps',
+    label: 'Projetos',
     items: [
-      { key: 'chat',          href: 'chat.html',          text: 'Chat',          icon: 'chat', badge: { text: '3', cls: 'badge-teal' } },
-      { key: 'inbox',         href: 'inbox.html',         text: 'Inbox',         icon: 'mail' },
-      { key: 'kanban',        href: 'kanban.html',        text: 'Kanban',        icon: 'kanban' },
-      { key: 'files',         href: 'file_manager.html',  text: 'Files',         icon: 'files' },
-      { key: 'notifications', href: 'notifications.html', text: 'Notifications', icon: 'bell' }
-    ]
-  },
-  {
-    label: 'E-commerce',
-    items: [
-      { key: 'storefront', href: 'e_commerce.html',    text: 'Storefront', icon: 'shop' },
-      { key: 'product',    href: 'product_detail.html', text: 'Product',   icon: 'tag' },
-      {
-        text: 'Orders', icon: 'cart',
-        children: [
-          { key: 'orders',       href: 'orders.html',       text: 'All orders' },
-          { key: 'order-detail', href: 'order_detail.html', text: 'Order detail' }
-        ]
-      },
-      { key: 'invoice', href: 'invoice.html',        text: 'Invoice', icon: 'receipt' },
-      { key: 'pricing', href: 'pricing_tables.html', text: 'Pricing', icon: 'price' }
-    ]
-  },
-  {
-    label: 'Projects',
-    items: [
-      { key: 'projects',       href: 'projects.html',       text: 'All projects', icon: 'projects' },
-      { key: 'project-detail', href: 'project_detail.html', text: 'Project detail', icon: 'pages' }
-    ]
-  },
-  {
-    label: 'UI library',
-    items: [
-      { key: 'ui',         href: 'general_elements.html', text: 'Elements',   icon: 'ui' },
-      { key: 'widgets',    href: 'widgets.html',          text: 'Widgets',    icon: 'pages', badge: { text: '5', cls: 'badge-blue' } },
-      { key: 'playground', href: 'playground.html',       text: 'Playground', icon: 'code',  badge: { text: 'New', cls: 'badge-teal' } },
-      { key: 'theme',      href: 'theme.html',            text: 'Theme',      icon: 'paint', badge: { text: 'New', cls: 'badge-teal' } },
-      { key: 'typography', href: 'typography.html',       text: 'Typography', icon: 'type' },
-      { key: 'icons',      href: 'icons.html',            text: 'Icons',      icon: 'icons' },
-      { key: 'media',      href: 'media_gallery.html',    text: 'Media',      icon: 'media' }
+      { key: 'projects',       href: 'projects.html',       text: 'Todos projetos', icon: 'projects' },
+      { key: 'project-detail', href: 'project_detail.html', text: 'Detalhes projeto', icon: 'pages' }
     ]
   },
   {
     label: 'Admin',
     items: [
-      { key: 'users',           href: 'contacts.html',         text: 'Contacts',        icon: 'users' },
-      { key: 'user_management', href: 'user_management.html',  text: 'User management', icon: 'profile' },
-      { key: 'profile',         href: 'profile.html',          text: 'Your profile',    icon: 'profile' },
-      { key: 'settings',        href: 'settings.html',         text: 'Settings',        icon: 'settings' },
-      { key: 'faq',             href: 'faq.html',              text: 'Help center',     icon: 'help' }
-    ]
-  },
-  {
-    label: 'Layouts',
-    items: [
-      { key: 'fixed-sidebar', href: 'fixed_sidebar.html', text: 'Fixed sidebar', icon: 'layout' },
-      { key: 'fixed-footer',  href: 'fixed_footer.html',  text: 'Fixed footer',  icon: 'layout' },
-      { key: 'level2',        href: 'level2.html',        text: 'Nested page',   icon: 'pages' },
-      { key: 'plain',         href: 'plain_page.html',    text: 'Blank',         icon: 'pages' }
+      { key: 'user_management', href: '/users/',               text: 'Gerenciar usuários', icon: 'users' },
+      { key: 'profile',         href: 'profile.html',          text: 'Seu perfil',    icon: 'profile' },
+      { key: 'settings',        href: 'settings.html',         text: 'Configurações',        icon: 'settings' }
     ]
   }
 ];
